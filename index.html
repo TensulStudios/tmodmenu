@@ -25,13 +25,13 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 100vh;
-            background-image: url('https://www.tempstudios.xyz/media/TemporaryStudiosLogo.png');
-            background-position: center 100px;
+            bottom: 0;
+            background-image: url('/media/bck.png');
+            background-position: top center;
             background-repeat: no-repeat;
-            background-size: 500px;
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+            background-size: cover;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
             z-index: 0;
             pointer-events: none;
         }
@@ -159,6 +159,18 @@
             color: #ffffff;
             font-weight: bold;
             margin-right: 8px;
+        }
+
+        .mod-name {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .mod-description {
+            color: #888888;
+            font-size: 14px;
+            margin-top: 4px;
+            margin-left: 20px;
         }
 
         .loading {
