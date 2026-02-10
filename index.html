@@ -66,6 +66,8 @@
         .hero {
             text-align: center;
             padding: 80px 20px 60px;
+            margin-top: -400px;
+            position: relative;
         }
 
         .hero h1 {
@@ -204,6 +206,8 @@
         </div>
     </div>
 
+    <div class="background-image"></div>
+
     <div class="container">
         <div class="hero">
             <h1>Temp's Menu</h1>
@@ -278,21 +282,40 @@
             let html = '<div class="mod-category">';
             html += `<h3>${category}</h3>`;
             html += '<ul>';
-            for (let mod of mods) {
-                const parts = mod.split(' - ');
+            for (let i = 0; i < mods.length; i++) {
+                const parts = mods[i].split(' - ');
                 const modName = parts[0];
                 const modDescription = parts[1] || '';
                 
-                html += `<li>`;
-                html += `<div class="mod-name">${modName}</div>`;
+                const modId = `mod-${category.replace(/\s+/g, '-')}-${i}`;
+                
                 if (modDescription) {
-                    html += `<div class="mod-description">${modDescription}</div>`;
+                    html += `<li onclick="toggleDescription('${modId}')">`;
+                    html += `<div class="mod-name">${modName}</div>`;
+                    html += `<div class="mod-description" id="${modId}">${modDescription}</div>`;
+                    html += `</li>`;
+                } else {
+                    html += `<li style="cursor: default;">`;
+                    html += `<div class="mod-name">${modName}</div>`;
+                    html += `</li>`;
                 }
-                html += `</li>`;
             }
             html += '</ul>';
             html += '</div>';
             return html;
+        }
+        
+        function toggleDescription(id) {
+            const description = document.getElementById(id);
+            const listItem = description.parentElement;
+            
+            if (description.classList.contains('visible')) {
+                description.classList.remove('visible');
+                listItem.classList.remove('expanded');
+            } else {
+                description.classList.add('visible');
+                listItem.classList.add('expanded');
+            }
         }
         
         window.addEventListener('load', loadMods);
